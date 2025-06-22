@@ -11,6 +11,11 @@ const locationData = JSON.parse(fs.readFileSync(locationDataPath, 'utf8'));
 
 files.forEach(file => {
     if (file.endsWith('.png')) {
+        if (locationData[island] && locationData[island][file.replace('.png', '')]) {
+            console.log(`Location data for ${file.replace('.png', '')} already exists.`);
+            return;
+        }
+        
         let data = {
             "id": file.replace('.png', ''),
             "image": file,
