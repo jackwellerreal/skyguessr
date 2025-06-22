@@ -15,8 +15,36 @@ import "leaflet/dist/leaflet.css";
 import map_data from "../../../public/content/map_data.json";
 import location_data from "../../../public/content/location_data.json";
 
-export function Game(data) {
+const randomLocation = (map) => {
+    // If "any", choose a random map with at least one location
+    if (map === "any") {
+        const availableMaps = Object.keys(location_data).filter(
+            (m) => Object.keys(location_data[m]).length > 0
+        );
+
+        if (availableMaps.length === 0) {
+            console.warn("No maps with locations found");
+            return null;
+        }
+
+        map = availableMaps[Math.floor(Math.random() * availableMaps.length)];
+    }
+
+    const options = location_data[map];
+    const keys = Object.keys(options);
+
+    if (keys.length === 0) {
+        console.warn(`No locations found for map: ${map}`);
+        return null;
+    }
+
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    return options[randomKey];
+};
+
+export function Game() {
     const mapRef = useRef();
+
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [hasGuessed, setHasGuessed] = useState(false);
     const [guessPosition, setGuessPosition] = useState(null);
@@ -24,7 +52,25 @@ export function Game(data) {
     const [score, setScore] = useState(null);
     const [linePositions, setLinePositions] = useState(null);
 
-    const { locationID, map } = data;
+    const [gameConfig] = useState(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return {
+            map: urlParams.get("map") || "any",
+            max_difficulty: urlParams.get("max_difficulty") || "hard",
+            modifiers: {
+                noPan: urlParams.get("noPan") === "true",
+                noZoom: urlParams.get("noZoom") === "true",
+            },
+        };
+    });
+
+    console.log("Game Config:", gameConfig);
+
+    const [location, setLocation] = useState(() =>
+        randomLocation(gameConfig.map)
+    );
+
+    console.log("Initial Location:", location);
 
     function ClickHandler({ setGuessPosition, disabled }) {
         useMapEvents({
@@ -83,14 +129,18 @@ export function Game(data) {
 
     function GuessHandler() {
         const guess_location = guessPosition;
-        const real_location = location_data[map][locationID]["location"];
+        const real_location = location.location;
 
         if (!guess_location || !real_location) {
             console.warn("Missing guess or real location");
             return;
         }
 
-        const result = calculateScore(guess_location, real_location, map);
+        const result = calculateScore(
+            guess_location,
+            real_location,
+            location.map
+        );
 
         setHasGuessed(true);
         setCorrectPosition(real_location);
@@ -109,7 +159,7 @@ export function Game(data) {
                 const bounds = L.latLngBounds([guess_location, real_location]);
                 mapRef.current.fitBounds(bounds, {
                     padding: [50, 50],
-                    maxZoom: map_data[map].zoom.max ?? 1,
+                    maxZoom: map_data[location.map].zoom.max ?? 1,
                 });
             }, 100);
         }
@@ -121,15 +171,26 @@ export function Game(data) {
         <div className={styles.gamePage}>
             <div className={styles.gameViewer}>
                 <ReactPhotoSphereViewer
-                    src={`/content/${map}/${location_data[map][locationID].image}`}
+                    key={location.id}
+                    src={`/content/${location.map}/${location.image}`}
                     height="100vh"
                     width="100%"
                     navbar={false}
-                    maxFov={120}
-                    minFov={30}
+                    maxFov={gameConfig.modifiers.noZoom ? 100 : 120}
+                    minFov={gameConfig.modifiers.noZoom ? 100 : 30}
                     defaultZoomLvl={25}
                     defaultPitch={0}
                     defaultYaw={0}
+                    defaultTransition={{
+                        speed: 0,
+                        rotation: false,
+                        effect: "none",
+                    }}
+                    mousewheel={!gameConfig.modifiers.noZoom}
+                    touchmoveTwoFingers={!gameConfig.modifiers.noZoom}
+                    moveInertia={!gameConfig.modifiers.noPan}
+                    mousemove={!gameConfig.modifiers.noPan}
+                    touchmoveOneFinger={!gameConfig.modifiers.noPan}
                 />
             </div>
             <div
@@ -157,12 +218,13 @@ export function Game(data) {
 
                 <div className={styles.gameMinimapContainer}>
                     <MapContainer
+                        key={location.id}
                         ref={mapRef}
                         style={{ height: "100%", width: "100%" }}
-                        center={map_data[map].bounds.center}
-                        zoom={map_data[map].zoom.default}
-                        minZoom={map_data[map].zoom.min}
-                        maxZoom={map_data[map].zoom.max}
+                        center={map_data[location.map].bounds.center}
+                        zoom={map_data[location.map].zoom.default}
+                        minZoom={map_data[location.map].zoom.min}
+                        maxZoom={map_data[location.map].zoom.max}
                         scrollWheelZoom={true}
                         zoomControl={false}
                         crs={L.CRS.Simple}
@@ -170,14 +232,12 @@ export function Game(data) {
                         inertia={true}
                     >
                         <ImageOverlay
-                            url={`/content/maps/${map}${
-                                location_data[map][locationID]["underground"]
-                                    ? "_underground"
-                                    : ""
+                            url={`/content/maps/${location.map}${
+                                location.underground ? "_underground" : ""
                             }.png`}
                             bounds={[
-                                map_data[map].bounds.start,
-                                map_data[map].bounds.end,
+                                map_data[location.map].bounds.start,
+                                map_data[location.map].bounds.end,
                             ]}
                             attribution="DeDiamondPro/SkyGuide — CC-BY-NC-SA-4.0"
                         />
@@ -220,19 +280,22 @@ export function Game(data) {
                         if (!hasGuessed) {
                             GuessHandler();
                         } else {
+                            setLocation(randomLocation(location.map));
+
                             setGuessPosition(null);
                             setCorrectPosition(null);
                             setLinePositions(null);
                             setScore(null);
-                            setIsFullscreen(false);
                             setHasGuessed(false);
+
+                            setIsFullscreen(false);
 
                             if (mapRef.current) {
                                 setTimeout(() => {
                                     mapRef.current.invalidateSize();
                                     mapRef.current.setView(
-                                        map_data[map].bounds.center,
-                                        map_data[map].zoom.default
+                                        map_data[location.map].bounds.center,
+                                        map_data[location.map].zoom.default
                                     );
                                 }, 100);
                             }
@@ -240,13 +303,11 @@ export function Game(data) {
                     }}
                     disabled={!guessPosition}
                 >
-                    <div className={styles.gameMinimapButtonText}>
-                        {guessPosition
-                            ? isFullscreen
-                                ? "Next"
-                                : "Submit Guess"
-                            : "Click to Guess"}
-                    </div>
+                    {guessPosition
+                        ? isFullscreen
+                            ? "Next"
+                            : "Submit Guess"
+                        : "Click to Guess"}
                 </button>
             </div>
         </div>

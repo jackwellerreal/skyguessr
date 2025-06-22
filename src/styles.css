@@ -1,6 +1,11 @@
 @font-face {
-    font-family: "Minecraft";
-    src: url("/assets/Minecraft.ttf") format("truetype");
+    font-family: "Normal";
+    src: url("/assets/Normal.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Title";
+    src: url("/assets/Title.otf") format("opentype");
 }
 
 :root {
@@ -21,6 +26,9 @@
     --mc-dark-gray: #555555;
     --mc-black: #000000;
 
+    --furf-yellow: #fbcc6c;
+    --furf-gold: #faa648;
+
     --button-normal-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
         rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
         rgba(0, 0, 0, 0) 0px 0px 0px 0px,
@@ -35,11 +43,14 @@
 }
 
 * {
-    font-family: "Minecraft", sans-serif;
+    font-family: "Normal", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
 }
 
 body {
-    margin: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -56,5 +67,57 @@ button {
 
 .leaflet-container .leaflet-control-attribution {
     background: rgba(0, 0, 0, 0.5) !important;
-    color: #fff;
+    color: var(--mc-white) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Title", sans-serif;
+    color: var(--mc-white);
+    text-shadow: 2.5px 2.5px 2px rgba(0, 0, 0, 0.5);
+}
+
+p {
+    font-family: "Normal", sans-serif;
+    color: var(--mc-white);
+    text-shadow: 2.5px 2.5px 2px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 20px;
+    color: var(--mc-white);
+    text-shadow: 2px 2px #000a;
+
+    outline: none;
+}
+
+button:disabled {
+    background-color: #14182f;
+    border: 4px solid #000;
+
+    cursor: not-allowed;
+}
+
+button:not(:disabled) {
+    width: 100%;
+    box-shadow: var(--button-small-box-shadow);
+
+    background-color: #2d354e;
+    border: 4px solid #000;
+
+    cursor: pointer;
+}
+
+button:not(:disabled):hover {
+    color: var(--furf-yellow);
+    border: 4px solid var(--furf-gold);
 }
