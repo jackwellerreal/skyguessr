@@ -10,7 +10,7 @@ import "./styles.css";
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
         <Routes>
-            <Route index element={<Home />} />
+            <Route index element={<Game locationID="pats_house" map="hub" />} />
             <Route path="game" element={<Game locationID="pats_house" map="hub" />} />
         </Routes>
     </BrowserRouter>
