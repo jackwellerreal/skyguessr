@@ -1,0 +1,18 @@
+{
+    "hub": {
+        "pats_house": {
+            "id": "pats_house",
+            "image": "pats_house.png",
+            "name": "Pat's House",
+            "map": "hub",
+            "location": [1344, 660]
+        }
+    },
+    "jerrys_workshop": {},
+    "park": {},
+    "farming_islands": {},
+    "gold_mine": {},
+    "spiders_den": {},
+    "end": {},
+    "crimson_isle": {}
+}

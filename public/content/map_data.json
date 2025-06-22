@@ -1,0 +1,106 @@
+{
+    "hub": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [1996, 1996],
+            "center": [998, 998]
+        },
+        "underground": true,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "jerrys_workshop": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [984, 912],
+            "center": [492, 456]
+        },
+        "underground": false,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "park": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [988, 988],
+            "center": [494, 494]
+        },
+        "underground": true,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "farming_islands": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [1272, 1696],
+            "center": [636, 848]
+        },
+        "underground": true,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "gold_mine": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [540, 540],
+            "center": [270, 270]
+        },
+        "underground": true,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "spiders_den": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [1208, 1208],
+            "center": [604, 604]
+        },
+        "underground": true,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "end": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [1372, 1196],
+            "center": [686, 598]
+        },
+        "underground": true,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    },
+    "crimson_isle": {
+        "bounds": {
+            "start": [0, 0],
+            "end": [3292, 3292],
+            "center": [1646, 1646]
+        },
+        "underground": false,
+        "zoom": {
+            "default": -2,
+            "min": -2,
+            "max": 1
+        }
+    }
+}

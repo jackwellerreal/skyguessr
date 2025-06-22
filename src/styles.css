@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "Minecraft";
+    src: url("/assets/Minecraft.ttf") format("truetype");
+}
+
+:root {
+    --mc-dark-red: #aa0000;
+    --mc-red: #ff5555;
+    --mc-gold: #ffaa00;
+    --mc-yellow: #ffff55;
+    --mc-dark-green: #55aa00;
+    --mc-green: #55ff55;
+    --mc-aqua: #55ffff;
+    --mc-dark-aqua: #00aaaa;
+    --mc-dark-blue: #0000aa;
+    --mc-blue: #5555ff;
+    --mc-light-purple: #ff55ff;
+    --mc-dark-purple: #aa00aa;
+    --mc-white: #ffffff;
+    --mc-gray: #aaaaaa;
+    --mc-dark-gray: #555555;
+    --mc-black: #000000;
+
+    --button-normal-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgb(28, 29, 48) -6.4px -6.4px 0px 0px inset,
+        rgb(68, 74, 113) 6.4px 6.4px 0px 0px inset;
+
+    --button-small-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgb(28, 29, 48) -3.2px -3.2px 0px 0px inset,
+        rgb(68, 74, 113) 3.2px 3.2px 0px 0px inset;
+}
+
+* {
+    font-family: "Minecraft", sans-serif;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+button {
+    outline: none;
+}
+
+.leaflet-container {
+    background: none !important;
+}
+
+.leaflet-container .leaflet-control-attribution {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #fff;
+}
