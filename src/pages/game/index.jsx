@@ -17,16 +17,21 @@ import location_data from "../../../public/content/location_data.json";
 
 export function Game(data) {
     const mapRef = useRef();
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const [hasGuessed, setHasGuessed] = useState(false);
     const [guessPosition, setGuessPosition] = useState(null);
     const [correctPosition, setCorrectPosition] = useState(null);
+    const [score, setScore] = useState(null);
     const [linePositions, setLinePositions] = useState(null);
 
     const { locationID, map } = data;
 
-    function ClickHandler({ setGuessPosition }) {
+    function ClickHandler({ setGuessPosition, disabled }) {
         useMapEvents({
             click(e) {
-                setGuessPosition([e.latlng.lat, e.latlng.lng]);
+                if (!disabled) {
+                    setGuessPosition([e.latlng.lat, e.latlng.lng]);
+                }
             },
         });
         return null;
@@ -87,14 +92,23 @@ export function Game(data) {
 
         const result = calculateScore(guess_location, real_location, map);
 
+        setHasGuessed(true);
         setCorrectPosition(real_location);
         setLinePositions([guess_location, real_location]);
+        setIsFullscreen(true);
 
         if (mapRef.current) {
-            mapRef.current.fitBounds([guess_location, real_location], {
-                padding: [20, 20],
-            });
+            setTimeout(() => {
+                mapRef.current.invalidateSize();
+                const bounds = L.latLngBounds([guess_location, real_location]);
+                mapRef.current.fitBounds(bounds, {
+                    padding: [50, 50],
+                    maxZoom: map_data[map].zoom.max ?? 1,
+                });
+            }, 100);
         }
+
+        setScore(result.score);
     }
 
     return (
@@ -112,8 +126,29 @@ export function Game(data) {
                     defaultYaw={0}
                 />
             </div>
+            <div
+                className={`${styles.gameMinimap} ${
+                    isFullscreen ? styles.gameMinimapFullscreen : ""
+                }`}
+            >
+                <div
+                    className={styles.gameMinimapHeader}
+                    style={
+                        isFullscreen ? { display: "flex" } : { display: "none" }
+                    }
+                >
+                    <div className={styles.gameMinimapHeaderBar}>
+                        <div
+                            className={styles.gameMinimapHeaderBarInside}
+                            style={{
+                                width: score !== null ? `${score / 50}%` : "0%",
+                            }}
+                        >
+                            {score}
+                        </div>
+                    </div>
+                </div>
 
-            <div className={styles.gameMinimap}>
                 <div className={styles.gameMinimapContainer}>
                     <MapContainer
                         ref={mapRef}
@@ -137,7 +172,10 @@ export function Game(data) {
                             attribution="DeDiamondPro/SkyGuide — CC-BY-NC-SA-4.0"
                         />
 
-                        <ClickHandler setGuessPosition={setGuessPosition} />
+                        <ClickHandler
+                            setGuessPosition={setGuessPosition}
+                            disabled={isFullscreen}
+                        />
 
                         {guessPosition && (
                             <Marker
@@ -169,13 +207,36 @@ export function Game(data) {
                 <button
                     className={styles.gameMinimapButton}
                     onClick={() => {
-                        if (guessPosition) {
+                        if (!hasGuessed) {
                             GuessHandler();
+                        } else {
+                            setGuessPosition(null);
+                            setCorrectPosition(null);
+                            setLinePositions(null);
+                            setScore(null);
+                            setIsFullscreen(false);
+                            setHasGuessed(false);
+                            
+                            if (mapRef.current) {
+                                setTimeout(() => {
+                                    mapRef.current.invalidateSize();
+                                    mapRef.current.setView(
+                                        map_data[map].bounds.center,
+                                        map_data[map].zoom.default
+                                    );
+                                }, 100);
+                            }
                         }
                     }}
                     disabled={!guessPosition}
                 >
-                    <div className={styles.gameMinimapButtonText}>Guess</div>
+                    <div className={styles.gameMinimapButtonText}>
+                        {guessPosition
+                            ? isFullscreen
+                                ? "Next"
+                                : "Submit Guess"
+                            : "Click to Guess"}
+                    </div>
                 </button>
             </div>
         </div>
