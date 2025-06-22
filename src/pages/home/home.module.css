@@ -67,7 +67,7 @@
     margin: 16px 0;
 }
 
-.homePageGridItem p {
+.homePageGridItem p, .homePageGridItem li {
     font-size: 20px;
 }
 

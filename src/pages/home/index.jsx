@@ -79,7 +79,7 @@ export function Home() {
                                 target="_blank"
                             >
                                 GeoGuessr
-                            </a>
+                            </a>{" "}
                             and a{" "}
                             <a
                                 href="https://www.youtube.com/watch?v=v0F-adGB4n8"
