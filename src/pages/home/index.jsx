@@ -140,12 +140,13 @@ export function Home() {
                         >
                             <option value="any">Any Map</option>
                             <option value="hub">Hub</option>
+                            <option value="jerrys_workshop" disabled>Jerry's Workshop</option>
                             <option value="park">Park</option>
-                            <option value="gold">Gold Mine</option>
-                            <option value="farming">Farming Islands</option>
+                            <option value="farming_islands" disabled>Farming Islands</option>
+                            <option value="gold_mine">Gold Mine</option>
                             <option value="spiders">Spiders Den</option>
-                            <option value="end">The End</option>
-                            <option value="crimson">Crimson Isle</option>
+                            <option value="end">End</option>
+                            <option value="crimson" disabled>Crimson Isle</option>
                         </select>
 
                         <p>

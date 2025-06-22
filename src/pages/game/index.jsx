@@ -16,7 +16,6 @@ import map_data from "../../../public/content/map_data.json";
 import location_data from "../../../public/content/location_data.json";
 
 const randomLocation = (map) => {
-    // If "any", choose a random map with at least one location
     if (map === "any") {
         const availableMaps = Object.keys(location_data).filter(
             (m) => Object.keys(location_data[m]).length > 0
@@ -39,6 +38,7 @@ const randomLocation = (map) => {
     }
 
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    //return options["barn_top"]
     return options[randomKey];
 };
 
@@ -150,8 +150,8 @@ export function Game() {
         /*alert(`You guessed: [${guess_location[0].toFixed(0)}, ${guess_location[1].toFixed(0)}]\n` +
               `Correct location: [${real_location[0].toFixed(0)}, ${real_location[1].toFixed(0)}]\n` +
               `Distance: ${result.distance.toFixed(0)}\n` +
-              `Score: ${result.score}`);
-              */
+              `Score: ${result.score}`);*/
+              
 
         if (mapRef.current) {
             setTimeout(() => {

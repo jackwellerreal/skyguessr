@@ -5,257 +5,1242 @@
             "image": "below_tower.png",
             "name": "",
             "map": "hub",
-            "location": [687, 1359],
+            "location": [
+                687,
+                1359
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "blacksmith_bedroom": {
             "id": "blacksmith_bedroom",
             "image": "blacksmith_bedroom.png",
             "name": "",
             "map": "hub",
-            "location": [1499, 1065],
+            "location": [
+                1499,
+                1065
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "castle_basement": {
             "id": "castle_basement",
             "image": "castle_basement.png",
             "name": "",
             "map": "hub",
-            "location": [658, 227],
+            "location": [
+                658,
+                227
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "colosseum_training": {
             "id": "colosseum_training",
             "image": "colosseum_training.png",
             "name": "",
             "map": "hub",
-            "location": [1067, 1846],
+            "location": [
+                1067,
+                1846
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "dungeon_hub": {
             "id": "dungeon_hub",
             "image": "dungeon_hub.png",
             "name": "",
             "map": "hub",
-            "location": [1475, 839],
+            "location": [
+                1475,
+                839
+            ],
             "difficulty": 0,
-            "underground": true,
-            "hidden": false
+            "underground": true
         },
         "elise_room": {
             "id": "elise_room",
             "image": "elise_room.png",
             "name": "",
             "map": "hub",
-            "location": [672, 1362],
+            "location": [
+                672,
+                1362
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "hacker": {
             "id": "hacker",
             "image": "hacker.png",
             "name": "",
             "map": "hub",
-            "location": [1032, 1399],
+            "location": [
+                1032,
+                1399
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "hex_basement": {
             "id": "hex_basement",
             "image": "hex_basement.png",
             "name": "",
             "map": "hub",
-            "location": [1434, 978],
+            "location": [
+                1434,
+                978
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "hoppity": {
             "id": "hoppity",
             "image": "hoppity.png",
             "name": "",
             "map": "hub",
-            "location": [912, 1250],
+            "location": [
+                912,
+                1250
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "jax_training": {
             "id": "jax_training",
             "image": "jax_training.png",
             "name": "",
             "map": "hub",
-            "location": [1515, 1175],
+            "location": [
+                1515,
+                1175
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "lighthouse_bedroom": {
             "id": "lighthouse_bedroom",
             "image": "lighthouse_bedroom.png",
             "name": "",
             "map": "hub",
-            "location": [0, 0],
+            "location": [
+                0,
+                0
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": true
+            "underground": false
         },
         "lumberjack_bedroom": {
             "id": "lumberjack_bedroom",
             "image": "lumberjack_bedroom.png",
             "name": "",
             "map": "hub",
-            "location": [1099, 612],
+            "location": [
+                1099,
+                612
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "maddox_tavern": {
             "id": "maddox_tavern",
             "image": "maddox_tavern.png",
             "name": "",
             "map": "hub",
-            "location": [1166, 885],
+            "location": [
+                1166,
+                885
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "marco_treehouse": {
             "id": "marco_treehouse",
             "image": "marco_treehouse.png",
             "name": "",
             "map": "hub",
-            "location": [0, 0],
+            "location": [
+                0,
+                0
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": true
+            "underground": false
         },
         "painting_room": {
             "id": "painting_room",
             "image": "painting_room.png",
             "name": "",
             "map": "hub",
-            "location": [1019, 1162],
+            "location": [
+                1019,
+                1162
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "pats_house": {
             "id": "pats_house",
             "image": "pats_house.png",
             "name": "",
             "map": "hub",
-            "location": [1344, 663],
+            "location": [
+                1344,
+                663
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "pet_attic": {
             "id": "pet_attic",
             "image": "pet_attic.png",
             "name": "",
             "map": "hub",
-            "location": [1320, 1327],
+            "location": [
+                1320,
+                1327
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "philosophers_tower": {
             "id": "philosophers_tower",
             "image": "philosophers_tower.png",
             "name": "",
             "map": "hub",
-            "location": [785, 200],
+            "location": [
+                785,
+                200
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "plumber_joe": {
             "id": "plumber_joe",
             "image": "plumber_joe.png",
             "name": "",
             "map": "hub",
-            "location": [1293, 1431],
+            "location": [
+                1293,
+                1431
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "pond_fairy_soul": {
             "id": "pond_fairy_soul",
             "image": "pond_fairy_soul.png",
             "name": "",
             "map": "hub",
-            "location": [0, 0],
+            "location": [
+                0,
+                0
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": true
+            "underground": false
         },
         "redstone_basement": {
             "id": "redstone_basement",
             "image": "redstone_basement.png",
             "name": "",
             "map": "hub",
-            "location": [1080, 978],
+            "location": [
+                1080,
+                978
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "ruins_near_castle": {
             "id": "ruins_near_castle",
             "image": "ruins_near_castle.png",
             "name": "",
             "map": "hub",
-            "location": [493, 575],
+            "location": [
+                493,
+                575
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "seymore_room": {
             "id": "seymore_room",
             "image": "seymore_room.png",
             "name": "",
             "map": "hub",
-            "location": [1126, 1289],
+            "location": [
+                1126,
+                1289
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "waterwheel_bedroom": {
             "id": "waterwheel_bedroom",
             "image": "waterwheel_bedroom.png",
             "name": "",
             "map": "hub",
-            "location": [727, 1505],
+            "location": [
+                727,
+                1505
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
         },
         "weaponsmith_bedroom": {
             "id": "weaponsmith_bedroom",
             "image": "weaponsmith_bedroom.png",
             "name": "",
             "map": "hub",
-            "location": [1494, 1177],
+            "location": [
+                1494,
+                1177
+            ],
             "difficulty": 0,
-            "underground": false,
-            "hidden": false
+            "underground": false
+        },
+        "mountaintop": {
+            "id": "mountaintop",
+            "image": "mountaintop.png",
+            "name": "",
+            "map": "hub",
+            "location": [
+                814,
+                1169
+            ],
+            "difficulty": 0
+        },
+        "scoop_house": {
+            "id": "scoop_house",
+            "image": "scoop_house.png",
+            "name": "",
+            "map": "hub",
+            "location": [
+                860,
+                1219
+            ],
+            "difficulty": 0
         }
     },
     "jerrys_workshop": {},
-    "park": {},
-    "farming_islands": {},
-    "gold_mine": {},
-    "spiders_den": {},
-    "end": {},
+    "park": {
+        "birch_trees": {
+            "id": "birch_trees",
+            "image": "birch_trees.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                461,
+                799
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "dark_trees": {
+            "id": "dark_trees",
+            "image": "dark_trees.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                680,
+                688
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "fire_trial": {
+            "id": "fire_trial",
+            "image": "fire_trial.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                824,
+                671
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "flower_altar": {
+            "id": "flower_altar",
+            "image": "flower_altar.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                331,
+                778
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "gustave_end": {
+            "id": "gustave_end",
+            "image": "gustave_end.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                859,
+                362
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "gustave_start": {
+            "id": "gustave_start",
+            "image": "gustave_start.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                180,
+                464
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "howling_enterance": {
+            "id": "howling_enterance",
+            "image": "howling_enterance.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                615,
+                658
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "howling_pond": {
+            "id": "howling_pond",
+            "image": "howling_pond.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                408,
+                443
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "howling_shop": {
+            "id": "howling_shop",
+            "image": "howling_shop.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                263,
+                483
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "inside_waterfall": {
+            "id": "inside_waterfall",
+            "image": "inside_waterfall.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                679,
+                486
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "juliette_island": {
+            "id": "juliette_island",
+            "image": "juliette_island.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                862,
+                106
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "jungle_trees": {
+            "id": "jungle_trees",
+            "image": "jungle_trees.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                649,
+                369
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "melody_harp": {
+            "id": "melody_harp",
+            "image": "melody_harp.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                262,
+                409
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "rain_altar": {
+            "id": "rain_altar",
+            "image": "rain_altar.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                676,
+                753
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "savanna_cave": {
+            "id": "savanna_cave",
+            "image": "savanna_cave.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                461,
+                220
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "spruce_trees": {
+            "id": "spruce_trees",
+            "image": "spruce_trees.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                364,
+                636
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "tactical_tent": {
+            "id": "tactical_tent",
+            "image": "tactical_tent.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                457,
+                151
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "viking_house": {
+            "id": "viking_house",
+            "image": "viking_house.png",
+            "name": "",
+            "map": "park",
+            "location": [
+                90,
+                585
+            ],
+            "difficulty": 0,
+            "underground": false
+        }
+    },
+    "farming_islands": {
+        "aqueduct": {
+            "id": "aqueduct",
+            "image": "aqueduct.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                237, 162
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "barn_bottom": {
+            "id": "barn_bottom",
+            "image": "barn_bottom.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                169, 328            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "barn_top": {
+            "id": "barn_top",
+            "image": "barn_top.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                156, 329
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "carrot_field": {
+            "id": "carrot_field",
+            "image": "carrot_field.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "desert": {
+            "id": "desert",
+            "image": "desert.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "desert_ruins": {
+            "id": "desert_ruins",
+            "image": "desert_ruins.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "gorge_bridge": {
+            "id": "gorge_bridge",
+            "image": "gorge_bridge.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "gorge_camp": {
+            "id": "gorge_camp",
+            "image": "gorge_camp.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "gorge_peaks": {
+            "id": "gorge_peaks",
+            "image": "gorge_peaks.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "hidden_lab": {
+            "id": "hidden_lab",
+            "image": "hidden_lab.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "jake_house": {
+            "id": "jake_house",
+            "image": "jake_house.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "jakes_house_bottom": {
+            "id": "jakes_house_bottom",
+            "image": "jakes_house_bottom.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "jakes_house_top": {
+            "id": "jakes_house_top",
+            "image": "jakes_house_top.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "mushroom_house_bottom": {
+            "id": "mushroom_house_bottom",
+            "image": "mushroom_house_bottom.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "mushroom_house_top": {
+            "id": "mushroom_house_top",
+            "image": "mushroom_house_top.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "mushroom_room": {
+            "id": "mushroom_room",
+            "image": "mushroom_room.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "oasis_bridge": {
+            "id": "oasis_bridge",
+            "image": "oasis_bridge.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "oasis_peer": {
+            "id": "oasis_peer",
+            "image": "oasis_peer.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "oasis_steppingstones": {
+            "id": "oasis_steppingstones",
+            "image": "oasis_steppingstones.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "pumpkin_patch": {
+            "id": "pumpkin_patch",
+            "image": "pumpkin_patch.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "romero_hut": {
+            "id": "romero_hut",
+            "image": "romero_hut.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "settlement": {
+            "id": "settlement",
+            "image": "settlement.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "trappers_den": {
+            "id": "trappers_den",
+            "image": "trappers_den.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "trappers_den_enterance": {
+            "id": "trappers_den_enterance",
+            "image": "trappers_den_enterance.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "treasure_camp_1": {
+            "id": "treasure_camp_1",
+            "image": "treasure_camp_1.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "treasure_camp_2": {
+            "id": "treasure_camp_2",
+            "image": "treasure_camp_2.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "windmill": {
+            "id": "windmill",
+            "image": "windmill.png",
+            "name": "",
+            "map": "farming_islands",
+            "location": [
+                0,
+                0
+            ],
+            "difficulty": 0,
+            "underground": false
+        }
+    },
+    "gold_mine": {
+        "entrance": {
+            "id": "entrance",
+            "image": "entrance.png",
+            "name": "",
+            "map": "gold_mine",
+            "location": [
+                257,
+                303
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "forge": {
+            "id": "forge",
+            "image": "forge.png",
+            "name": "",
+            "map": "gold_mine",
+            "location": [
+                138,
+                208
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "large_crates": {
+            "id": "large_crates",
+            "image": "large_crates.png",
+            "name": "",
+            "map": "gold_mine",
+            "location": [
+                44,
+                231
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "peak": {
+            "id": "peak",
+            "image": "peak.png",
+            "name": "",
+            "map": "gold_mine",
+            "location": [
+                370,
+                298
+            ],
+            "difficulty": 0,
+            "underground": false
+        }
+    },
+    "spiders_den": {
+        "above_ladder": {
+            "id": "above_ladder",
+            "image": "above_ladder.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                664,
+                461
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "archaeologist_camp": {
+            "id": "archaeologist_camp",
+            "image": "archaeologist_camp.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                735,
+                232
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "behind_mountain": {
+            "id": "behind_mountain",
+            "image": "behind_mountain.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                858,
+                1035
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "grandma_attic": {
+            "id": "grandma_attic",
+            "image": "grandma_attic.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                308,
+                519
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "grandma_balcony": {
+            "id": "grandma_balcony",
+            "image": "grandma_balcony.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                375,
+                509
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "gravel_entrance": {
+            "id": "gravel_entrance",
+            "image": "gravel_entrance.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                891,
+                647
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "jail": {
+            "id": "jail",
+            "image": "jail.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                314,
+                535
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "mountain_enterance": {
+            "id": "mountain_enterance",
+            "image": "mountain_enterance.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                634,
+                738
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "mountain_ledge": {
+            "id": "mountain_ledge",
+            "image": "mountain_ledge.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                788,
+                754
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "mountain_top": {
+            "id": "mountain_top",
+            "image": "mountain_top.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                816,
+                871
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "nearby_pond": {
+            "id": "nearby_pond",
+            "image": "nearby_pond.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                740,
+                490
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "pond_island": {
+            "id": "pond_island",
+            "image": "pond_island.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                245,
+                438
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "sanctuary_door": {
+            "id": "sanctuary_door",
+            "image": "sanctuary_door.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                192,
+                513
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "sanctuary_enterance": {
+            "id": "sanctuary_enterance",
+            "image": "sanctuary_enterance.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                391,
+                498
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "sanctuary_ledge": {
+            "id": "sanctuary_ledge",
+            "image": "sanctuary_ledge.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                344,
+                440
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "skull_inside": {
+            "id": "skull_inside",
+            "image": "skull_inside.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                589,
+                295
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "skull_top": {
+            "id": "skull_top",
+            "image": "skull_top.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                589,
+                295
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "small_island": {
+            "id": "small_island",
+            "image": "small_island.png",
+            "name": "",
+            "map": "spiders_den",
+            "location": [
+                410,
+                -52
+            ],
+            "difficulty": 0,
+            "underground": false
+        }
+    },
+    "end": {
+        "draconic_altar": {
+            "id": "draconic_altar",
+            "image": "draconic_altar.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                698,
+                609
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "end_altar": {
+            "id": "end_altar",
+            "image": "end_altar.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                697,
+                437
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "guber_end": {
+            "id": "guber_end",
+            "image": "guber_end.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                805,
+                73
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "guber_start": {
+            "id": "guber_start",
+            "image": "guber_start.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                536,
+                999
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "nest_entrance": {
+            "id": "nest_entrance",
+            "image": "nest_entrance.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                698,
+                592
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "nest_pillar_1": {
+            "id": "nest_pillar_1",
+            "image": "nest_pillar_1.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                545,
+                471
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "nest_pillar_2": {
+            "id": "nest_pillar_2",
+            "image": "nest_pillar_2.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                893,
+                251
+            ],
+            "difficulty": 0,
+            "underground": true
+        },
+        "obby_mine": {
+            "id": "obby_mine",
+            "image": "obby_mine.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                780,
+                663
+            ],
+            "difficulty": 0,
+            "underground": false
+        },
+        "shop": {
+            "id": "shop",
+            "image": "shop.png",
+            "name": "",
+            "map": "end",
+            "location": [
+                765,
+                983
+            ],
+            "difficulty": 0,
+            "underground": false
+        }
+    },
     "crimson_isle": {}
 }
