@@ -97,6 +97,12 @@ export function Game(data) {
         setLinePositions([guess_location, real_location]);
         setIsFullscreen(true);
 
+        /*alert(`You guessed: [${guess_location[0].toFixed(0)}, ${guess_location[1].toFixed(0)}]\n` +
+              `Correct location: [${real_location[0].toFixed(0)}, ${real_location[1].toFixed(0)}]\n` +
+              `Distance: ${result.distance.toFixed(0)}\n` +
+              `Score: ${result.score}`);
+              */
+
         if (mapRef.current) {
             setTimeout(() => {
                 mapRef.current.invalidateSize();
@@ -115,7 +121,7 @@ export function Game(data) {
         <div className={styles.gamePage}>
             <div className={styles.gameViewer}>
                 <ReactPhotoSphereViewer
-                    src={`/content/${map}/${locationID}.jpg`}
+                    src={`/content/${map}/${location_data[map][locationID].image}`}
                     height="100vh"
                     width="100%"
                     navbar={false}
@@ -164,7 +170,11 @@ export function Game(data) {
                         inertia={true}
                     >
                         <ImageOverlay
-                            url={`/content/maps/${map}.png`}
+                            url={`/content/maps/${map}${
+                                location_data[map][locationID]["underground"]
+                                    ? "_underground"
+                                    : ""
+                            }.png`}
                             bounds={[
                                 map_data[map].bounds.start,
                                 map_data[map].bounds.end,
@@ -216,7 +226,7 @@ export function Game(data) {
                             setScore(null);
                             setIsFullscreen(false);
                             setHasGuessed(false);
-                            
+
                             if (mapRef.current) {
                                 setTimeout(() => {
                                     mapRef.current.invalidateSize();
