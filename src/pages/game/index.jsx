@@ -26,7 +26,18 @@ const randomLocation = (map) => {
             return null;
         }
 
-        map = availableMaps[Math.floor(Math.random() * availableMaps.length)];
+        const allLocations = availableMaps.reduce((acc, m) => {
+            return { ...acc, ...location_data[m] };
+        }, {});
+
+        const keys = Object.keys(allLocations);
+        if (keys.length === 0) {
+            console.warn("No locations found in any map");
+            return null;
+        }
+
+        const randomKey = keys[Math.floor(Math.random() * keys.length)];
+        return allLocations[randomKey];
     }
 
     const options = location_data[map];
@@ -64,13 +75,9 @@ export function Game() {
         };
     });
 
-    console.log("Game Config:", gameConfig);
-
     const [location, setLocation] = useState(() =>
         randomLocation(gameConfig.map)
     );
-
-    console.log("Initial Location:", location);
 
     function ClickHandler({ setGuessPosition, disabled }) {
         useMapEvents({
