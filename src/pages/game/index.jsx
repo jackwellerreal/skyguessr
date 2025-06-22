@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ReactPhotoSphereViewer } from "react-photo-sphere-viewer";
 import {
     MapContainer,
     ImageOverlay,
     Marker,
+    Polyline,
     useMapEvents,
 } from "react-leaflet";
 import L from "leaflet";
@@ -15,7 +16,11 @@ import map_data from "../../../public/content/map_data.json";
 import location_data from "../../../public/content/location_data.json";
 
 export function Game(data) {
+    const mapRef = useRef();
     const [guessPosition, setGuessPosition] = useState(null);
+    const [correctPosition, setCorrectPosition] = useState(null);
+    const [linePositions, setLinePositions] = useState(null);
+
     const { locationID, map } = data;
 
     function ClickHandler({ setGuessPosition }) {
@@ -27,8 +32,15 @@ export function Game(data) {
         return null;
     }
 
-    const customMarkerIcon = new L.Icon({
+    const guessMarkerIcon = new L.Icon({
         iconUrl: "/assets/marker_guess.png",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
+    });
+
+    const correctMarkerIcon = new L.Icon({
+        iconUrl: "/assets/marker_correct.png",
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32],
@@ -44,7 +56,9 @@ export function Game(data) {
         const dx = guess_location[1] - real_location[1];
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance <= 25) {
+        const perfectRadius = 25;
+
+        if (distance <= perfectRadius) {
             return { distance, score: 5000 };
         }
 
@@ -52,7 +66,10 @@ export function Game(data) {
         const avgEnd = (end[0] + end[1]) / 2;
         const maxDistance = avgEnd * 0.5;
 
-        const ratio = Math.max(0, 1 - distance / maxDistance);
+        const excessDistance = distance - perfectRadius;
+        const adjustedMax = Math.max(1, maxDistance - perfectRadius);
+
+        const ratio = Math.max(0, 1 - excessDistance / adjustedMax);
         const power = 1.5;
         const score = Math.round(5000 * Math.pow(ratio, power));
 
@@ -68,12 +85,16 @@ export function Game(data) {
             return;
         }
 
-        const result = calculateScore(
-            guessPosition,
-            location_data[map][locationID]["location"],
-            map
-        );
-        alert(`Score: ${result.score}`);
+        const result = calculateScore(guess_location, real_location, map);
+
+        setCorrectPosition(real_location);
+        setLinePositions([guess_location, real_location]);
+
+        if (mapRef.current) {
+            mapRef.current.fitBounds([guess_location, real_location], {
+                padding: [20, 20],
+            });
+        }
     }
 
     return (
@@ -95,6 +116,7 @@ export function Game(data) {
             <div className={styles.gameMinimap}>
                 <div className={styles.gameMinimapContainer}>
                     <MapContainer
+                        ref={mapRef}
                         style={{ height: "100%", width: "100%" }}
                         center={map_data[map].bounds.center}
                         zoom={map_data[map].zoom.default}
@@ -116,10 +138,30 @@ export function Game(data) {
                         />
 
                         <ClickHandler setGuessPosition={setGuessPosition} />
+
                         {guessPosition && (
                             <Marker
                                 position={guessPosition}
-                                icon={customMarkerIcon}
+                                icon={guessMarkerIcon}
+                            />
+                        )}
+
+                        {correctPosition && (
+                            <Marker
+                                position={correctPosition}
+                                icon={correctMarkerIcon}
+                            />
+                        )}
+
+                        {linePositions && (
+                            <Polyline
+                                positions={linePositions}
+                                pathOptions={{
+                                    color: "white",
+                                    weight: 4,
+                                    dashArray: "10, 10",
+                                    dashOffset: "10",
+                                }}
                             />
                         )}
                     </MapContainer>
