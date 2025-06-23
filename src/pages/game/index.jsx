@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ReactPhotoSphereViewer } from "react-photo-sphere-viewer";
 import {
     MapContainer,
@@ -49,12 +49,13 @@ const randomLocation = (map) => {
     }
 
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    //return options["barn_top"]
     return options[randomKey];
 };
 
 export function Game() {
     const mapRef = useRef();
+    const [timeElapsed, setTimeElapsed] = useState(0);
+    const stopwatchRef = useRef(null);
 
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [hasGuessed, setHasGuessed] = useState(false);
@@ -72,6 +73,10 @@ export function Game() {
                 noPan: urlParams.get("noPan") === "true",
                 noZoom: urlParams.get("noZoom") === "true",
             },
+            timeLimit: urlParams.get("timeLimit")
+                ? parseInt(urlParams.get("timeLimit"))
+                : null,
+            devMode: urlParams.get("devMode") === "true",
         };
     });
 
@@ -134,6 +139,23 @@ export function Game() {
         return { distance, score };
     }
 
+    function handleTimeExpiry() {
+        setHasGuessed(true);
+        setCorrectPosition(location.location);
+        setLinePositions([location.location, location.location]);
+        setIsFullscreen(true);
+
+        if (mapRef.current) {
+            setTimeout(() => {
+                mapRef.current.invalidateSize();
+                mapRef.current.setView(
+                    location.location,
+                    map_data[location.map].zoom.max ?? 1
+                );
+            }, 100);
+        }
+    }
+
     function GuessHandler() {
         const guess_location = guessPosition;
         const real_location = location.location;
@@ -154,11 +176,22 @@ export function Game() {
         setLinePositions([guess_location, real_location]);
         setIsFullscreen(true);
 
-        /*alert(`You guessed: [${guess_location[0].toFixed(0)}, ${guess_location[1].toFixed(0)}]\n` +
-              `Correct location: [${real_location[0].toFixed(0)}, ${real_location[1].toFixed(0)}]\n` +
-              `Distance: ${result.distance.toFixed(0)}\n` +
-              `Score: ${result.score}`);*/
-              
+        if (stopwatchRef.current) {
+            clearInterval(stopwatchRef.current);
+        }
+
+        if (gameConfig.devMode) {
+            alert(
+                `You guessed: [${guess_location[0].toFixed(
+                    0
+                )}, ${guess_location[1].toFixed(0)}]\n` +
+                    `Correct location: [${real_location[0].toFixed(
+                        0
+                    )}, ${real_location[1].toFixed(0)}]\n` +
+                    `Distance: ${result.distance.toFixed(0)}\n` +
+                    `Score: ${result.score}`
+            );
+        }
 
         if (mapRef.current) {
             setTimeout(() => {
@@ -173,6 +206,14 @@ export function Game() {
 
         setScore(result.score);
     }
+
+    useEffect(() => {
+        return () => {
+            if (stopwatchRef.current) {
+                clearInterval(stopwatchRef.current);
+            }
+        };
+    }, []);
 
     return (
         <div className={styles.gamePage}>
@@ -198,6 +239,27 @@ export function Game() {
                     moveInertia={!gameConfig.modifiers.noPan}
                     mousemove={!gameConfig.modifiers.noPan}
                     touchmoveOneFinger={!gameConfig.modifiers.noPan}
+                    onReady={() => {
+                        if (stopwatchRef.current) {
+                            clearInterval(stopwatchRef.current);
+                        }
+                        setTimeElapsed(0);
+                        stopwatchRef.current = setInterval(() => {
+                            setTimeElapsed((prev) => {
+                                const newTime = prev + 1;
+
+                                if (
+                                    gameConfig.timeLimit &&
+                                    newTime >= gameConfig.timeLimit
+                                ) {
+                                    clearInterval(stopwatchRef.current);
+                                    handleTimeExpiry();
+                                }
+
+                                return newTime;
+                            });
+                        }, 1000);
+                    }}
                 />
             </div>
             <div
@@ -205,20 +267,32 @@ export function Game() {
                     isFullscreen ? styles.gameMinimapFullscreen : ""
                 }`}
             >
-                <div
-                    className={styles.gameMinimapHeader}
-                    style={
-                        isFullscreen ? { display: "flex" } : { display: "none" }
-                    }
-                >
-                    <div className={styles.gameMinimapHeaderBar}>
+                <div className={styles.gameMinimapHeader}>
+                    <div
+                        className={styles.gameTimer}
+                        style={{
+                            left: `${isFullscreen ? "24px" : "8px"}`,
+                        }}
+                    >
+                        {`${Math.floor(timeElapsed / 60)}:${(timeElapsed % 60)
+                            .toString()
+                            .padStart(2, "0")}`}
+                    </div>
+                    <div
+                        className={styles.gameMinimapHeaderBar}
+                        style={
+                            isFullscreen
+                                ? { display: "flex" }
+                                : { display: "none" }
+                        }
+                    >
                         <div
                             className={styles.gameMinimapHeaderBarInside}
                             style={{
                                 width: score !== null ? `${score / 50}%` : "0%",
                             }}
                         >
-                            {score}
+                            {score !== null ? score : "0"}
                         </div>
                     </div>
                 </div>
@@ -294,7 +368,6 @@ export function Game() {
                             setLinePositions(null);
                             setScore(null);
                             setHasGuessed(false);
-
                             setIsFullscreen(false);
 
                             if (mapRef.current) {
@@ -308,12 +381,14 @@ export function Game() {
                             }
                         }
                     }}
-                    disabled={!guessPosition}
+                    disabled={!guessPosition && !hasGuessed}
                 >
                     {guessPosition
                         ? isFullscreen
                             ? "Next"
                             : "Submit Guess"
+                        : hasGuessed
+                        ? "Next"
                         : "Click to Guess"}
                 </button>
             </div>

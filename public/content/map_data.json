@@ -15,8 +15,8 @@
     "jerrys_workshop": {
         "bounds": {
             "start": [0, 0],
-            "end": [984, 912],
-            "center": [492, 456]
+            "end": [984, 984],
+            "center": [492, 492]
         },
         "underground": false,
         "zoom": {
@@ -41,8 +41,8 @@
     "farming_islands": {
         "bounds": {
             "start": [0, 0],
-            "end": [1272, 1696],
-            "center": [636, 848]
+            "end": [1696, 1696],
+            "center": [848, 848]
         },
         "underground": true,
         "zoom": {
@@ -80,8 +80,8 @@
     "end": {
         "bounds": {
             "start": [0, 0],
-            "end": [1372, 1196],
-            "center": [686, 598]
+            "end": [1372, 1372],
+            "center": [686, 686]
         },
         "underground": true,
         "zoom": {

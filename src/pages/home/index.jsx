@@ -27,6 +27,7 @@ export function Home() {
                         noPan: false,
                         noZoom: false,
                     },
+                    timeLimit: null,
                 });
             }
         }
@@ -45,6 +46,9 @@ export function Home() {
         }
         if (config.modifiers.noZoom) {
             params.set("noZoom", "true");
+        }
+        if (config.timeLimit) {
+            params.set("timeLimit", config.timeLimit);
         }
         return `?${params.toString()}`;
     };
@@ -140,13 +144,19 @@ export function Home() {
                         >
                             <option value="any">Any Map</option>
                             <option value="hub">Hub</option>
-                            <option value="jerrys_workshop" disabled>Jerry's Workshop</option>
+                            <option value="jerrys_workshop" disabled>
+                                Jerry's Workshop
+                            </option>
                             <option value="park">Park</option>
-                            <option value="farming_islands" disabled>Farming Islands</option>
+                            <option value="farming_islands" disabled>
+                                Farming Islands
+                            </option>
                             <option value="gold_mine">Gold Mine</option>
                             <option value="spiders">Spiders Den</option>
                             <option value="end">End</option>
-                            <option value="crimson" disabled>Crimson Isle</option>
+                            <option value="crimson" disabled>
+                                Crimson Isle
+                            </option>
                         </select>
 
                         <p>
@@ -203,6 +213,26 @@ export function Home() {
                                 <span>No Zoom</span>
                             </label>
                         </div>
+
+                        <p>
+                            What time limit do you want to play with? (keep
+                            blank for none)
+                        </p>
+                        <input
+                            type="text"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            placeholder="Time Limit in Seconds"
+                            value={gameConfig.timeLimit ?? ""}
+                            onChange={(e) => {
+                                setGameConfig({
+                                    ...gameConfig,
+                                    timeLimit: !isNaN(e.target.value)
+                                        ? parseInt(e.target.value, 10)
+                                        : null,
+                                });
+                            }}
+                        />
                     </div>
 
                     <button

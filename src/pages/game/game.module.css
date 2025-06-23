@@ -52,6 +52,19 @@
     z-index: 999;
 }
 
+.gameTimer {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    z-index: 1000;
+    
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
 
 .gameMinimapHeaderBar {
     width: 75%;
