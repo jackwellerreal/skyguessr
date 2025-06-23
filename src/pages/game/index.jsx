@@ -10,7 +10,6 @@ import {
 import L from "leaflet";
 
 import styles from "./game.module.css";
-import "@photo-sphere-viewer/compass-plugin/index.css";
 import "leaflet/dist/leaflet.css";
 
 import map_data from "../../../public/content/map_data.json";
