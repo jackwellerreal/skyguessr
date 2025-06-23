@@ -10,14 +10,24 @@ import {
 import L from "leaflet";
 
 import styles from "./game.module.css";
+import "@photo-sphere-viewer/compass-plugin/index.css";
 import "leaflet/dist/leaflet.css";
 
 import map_data from "../../../public/content/map_data.json";
 import location_data from "../../../public/content/location_data.json";
 
+const mapHistory = []; // global or module-scoped
+
+const shuffleArray = (array) => {
+    return array
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+};
+
 const randomLocation = (map) => {
     if (map === "any") {
-        const availableMaps = Object.keys(location_data).filter(
+        let availableMaps = Object.keys(location_data).filter(
             (m) => Object.keys(location_data[m]).length > 0
         );
 
@@ -26,20 +36,43 @@ const randomLocation = (map) => {
             return null;
         }
 
-        const allLocations = availableMaps.reduce((acc, m) => {
-            return { ...acc, ...location_data[m] };
-        }, {});
+        const shuffledMaps = shuffleArray(availableMaps);
 
-        const keys = Object.keys(allLocations);
+        // Filter out maps in last 3 history
+        const filteredMaps = shuffledMaps.filter(
+            (m) => !mapHistory.includes(m)
+        );
+
+        // Use filtered if possible; otherwise fallback to shuffledMaps
+        const candidates =
+            filteredMaps.length > 0 ? filteredMaps : shuffledMaps;
+
+        const chosenMap =
+            candidates[Math.floor(Math.random() * candidates.length)];
+
+        // Pick a random location in chosenMap
+        const options = location_data[chosenMap];
+        const keys = Object.keys(options);
+
         if (keys.length === 0) {
-            console.warn("No locations found in any map");
+            console.warn(`No locations found for map: ${chosenMap}`);
             return null;
         }
 
         const randomKey = keys[Math.floor(Math.random() * keys.length)];
-        return allLocations[randomKey];
+
+        // Update mapHistory to keep last 3 unique maps
+        if (!mapHistory.includes(chosenMap)) {
+            mapHistory.push(chosenMap);
+            if (mapHistory.length > 3) {
+                mapHistory.shift();
+            }
+        }
+
+        return options[randomKey];
     }
 
+    // If a specific map is requested, just pick randomly from its locations
     const options = location_data[map];
     const keys = Object.keys(options);
 
@@ -140,19 +173,30 @@ export function Game() {
     }
 
     function handleTimeExpiry() {
-        setHasGuessed(true);
-        setCorrectPosition(location.location);
-        setLinePositions([location.location, location.location]);
-        setIsFullscreen(true);
+        if (guessPosition) {
+            // Auto-submit the existing guess with full scoring and line drawing
+            GuessHandler();
+        } else {
+            // No guess - just reveal correct position without score or line
+            setHasGuessed(true);
+            setCorrectPosition(location.location);
+            setLinePositions([location.location, location.location]);
+            setScore(null);
+            setIsFullscreen(true);
 
-        if (mapRef.current) {
-            setTimeout(() => {
-                mapRef.current.invalidateSize();
-                mapRef.current.setView(
-                    location.location,
-                    map_data[location.map].zoom.max ?? 1
-                );
-            }, 100);
+            if (mapRef.current) {
+                setTimeout(() => {
+                    mapRef.current.invalidateSize();
+                    mapRef.current.setView(
+                        location.location,
+                        map_data[location.map].zoom.max ?? 1
+                    );
+                }, 100);
+            }
+        }
+
+        if (stopwatchRef.current) {
+            clearInterval(stopwatchRef.current);
         }
     }
 
@@ -214,6 +258,44 @@ export function Game() {
             }
         };
     }, []);
+
+    useEffect(() => {
+        function handleKeyDown(e) {
+            if (e.code === "Space" || e.code === "Enter") {
+                e.preventDefault();
+
+                if (!hasGuessed) {
+                    if (guessPosition) {
+                        GuessHandler();
+                    }
+                } else {
+                    // Proceed to next round
+                    setLocation(randomLocation(location.map));
+
+                    setGuessPosition(null);
+                    setCorrectPosition(null);
+                    setLinePositions(null);
+                    setScore(null);
+                    setHasGuessed(false);
+                    setIsFullscreen(false);
+
+                    if (mapRef.current) {
+                        setTimeout(() => {
+                            mapRef.current.invalidateSize();
+                            mapRef.current.setView(
+                                map_data[location.map].bounds.center,
+                                map_data[location.map].zoom.default
+                            );
+                        }, 100);
+                    }
+                }
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hasGuessed, guessPosition, location.map]);
 
     return (
         <div className={styles.gamePage}>
